@@ -1,0 +1,24 @@
+<p><b>Hacker News</b>  <a href="/posts/new">New post</a> | <a href="/login">Log in</a> | <a href="/logout">Log out</a></p>
+
+<% if !@posts.nil? %>
+
+<% @posts.each do |p| %>
+  <div id="post<%= p.id %>">
+    <a href="<%= p.link %>"><%= p.title %></a>
+    <br/>
+    <font size="0.5px">by
+      <a href="/users/<%= p.user_id %>">
+
+        <%= p.user.username if !p.user.nil? %>
+      </a> at <%= p.created_at %> |
+      <a href="/posts/<%= p.id %>">
+        <%= p.comments.count %> comments
+      </a>
+      <form class="upvote" action="/post/<%= p.id %>/upvote" method="post" >
+        <input <%= "disabled" if @user && !p.postvotes.where(user_id: @user.id).empty? %> type="submit" value="upvote">
+        <
+      </form> | <votes><%= p.post_votes.count %></votes> votes
+    </font>
+  </div>
+<% end %>
+<% end %>

@@ -1,0 +1,21 @@
+
+<%= form_for(@post) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :link %><br>
+    <%= f.text_field :link, class:'form-control' %>
+  <div>
+
+  <div class="form-group">
+    <%= f.submit class:'btn btn-default' %>
+  </div>
+
+
+<% end %>
+
+

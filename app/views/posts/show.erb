@@ -1,0 +1,20 @@
+
+<p>
+  <%= @post.title %><br/>
+  <font size="0.5px">
+    Created at: <a href="/post/<%= @post.id %>"><%= @post.created_at %></a> <br/>
+    <a href="/post/<%= @post.id %>/comment/new">Leave a comment</a></font>
+</p>
+
+<p>
+  <% if @comments != nil %>
+    <% @comments.each do |comment| %>
+    <p>
+      <%= comment.body %><br/>
+      <font size="0.5px">by <a href="/profile/<%= comment.user_id %>"><%= comment.user.username %></a> | <a href="/post/<%= @post.id %>/<%= comment.id %>/upvote">vote up</a> | <%= comment.commentvotes.count %> votes</font>
+    </p>
+    <% end %>
+  <% end %>
+</p>
+
+<a href="/">Go back to feed</a>
